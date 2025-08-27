@@ -1,6 +1,6 @@
 # endoPRS
 R package to fit the endoPRS method. endoPRS is a weighted penalized regression model that incorporates information from endophenotypes to improve polygenic risk score prediction.
-
+<img src="endoPRS_overview.jpg" width="75%"/>
 
 ## Installation
 To install endoPRS, you can use the following code:
@@ -28,4 +28,4 @@ However, a relatively large number of models is fit in the grid search so this c
 ## Citations
 Please cite:
 
-Kharitonova, E.V., et. al. EndoPRS: Incorporating Endophenotype Information to Improve Polygenic Risk Scores for Clinical Endpoints. *medRxiv*. (2024).
+Kharitonova, E.V., et. al. “EndoPRS: Incorporating Endophenotype Information to Improve Polygenic Risk Scores for Clinical Endpoints-A study in asthma." *American Journal of Human Genetics*. **112**, 1199-1214 (2025).
