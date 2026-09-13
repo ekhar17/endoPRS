@@ -1,17 +1,23 @@
 Package: endoPRS
 Title: endoPRS: Incorporating endophenotype information to improve polygenic risk scores 
-Version: 1.0.0
+Version: 1.1.0
 Authors@R: 
     person("Elena", "Kharitonova", , "ekhar@ad.unc.edu", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0003-3060-3956"))
-Description: This package fits a polygenic risk score using the endoPRS method. endoPRS is a weighted penalized regression model that incorporates information from endophenotypes to improve polygenic risk score prediction.
+Description: This package fits a polygenic risk score using the endoPRS method. endoPRS is a weighted penalized regression model that incorporates information from endophenotypes to improve polygenic risk score prediction. It provides both the individual level version, which fits a weighted lasso to genotype data, and endoPRS-SS, which fits a weighted lassosum2 model using only GWAS summary statistics and an LD reference panel.
 License: `use_gpl3_license()
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
 Imports:
   bigsnpr,
-  tidyverse,
+  bigstatsr,
+  bigsparser,
+  bigassertr,
+  bigparallelr,
+  foreach,
+  Matrix,
+  methods,
   data.table
 Suggests:
   knitr,
