@@ -50,7 +50,7 @@ endoPRS_ss <- fit_endoPRS_ss(G, map, fam,
 As with the individual level version, the grid can be fit in parallel on a cluster using
 `fit_endoPRS_ss_single_iter` and then combined with `select_endoPRS_ss`. See **HPC_example/**.
 
-`endoPRS-SS` does **not** require a modified version of `bigsnpr`. The compiled `lassosum2` solver in
+`endoPRS-SS` does **not** require a modified version of `bigsnpr` (version 1.10.5 or later). The compiled `lassosum2` solver in
 `bigsnpr` already accepts per-variant `lambda` and `delta_plus_one` vectors, so endoPRS supplies the
 weighted penalty factor itself and calls that solver directly.
 

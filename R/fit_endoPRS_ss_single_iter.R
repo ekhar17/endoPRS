@@ -33,6 +33,14 @@ fit_endoPRS_ss_single_iter = function(G, map, fam,
                                       save_folder){
 
   if(is.null(thresh_endo)) thresh_endo = thresh
+
+  ## Allowed, but it is outside the grid fit_endoPRS_ss tunes over, so it is most likely a swapped argument
+  if(thresh_endo > thresh){
+    warning(paste0("thresh_endo (", thresh_endo, ") is less stringent than thresh (", thresh,
+                   "). fit_endoPRS_ss only tunes over thresh_endo <= thresh; check that the",
+                   " arguments are not swapped."))
+  }
+
   if(is.null(NCORES)) NCORES = nb_cores()
   if(is.null(grid)){
     grid = expand.grid(w2 = c(1e-1, 0.5, 1, 2, 10), w3 = c(1e-1, 0.5, 1, 2, 10))
@@ -50,7 +58,7 @@ fit_endoPRS_ss_single_iter = function(G, map, fam,
   if(is.null(type)){
     type = if(sum(!(y.val %in% c(0, 1))) > 0) "linear" else "logistic"
   }
-  covar.val = if(is.null(val_covar)) NULL else covar_from_df(val_covar[, -c(1, 2)])
+  covar.val = if(is.null(val_covar)) NULL else covar_from_df(val_covar[, -c(1, 2), drop = FALSE])
 
   geno_map = data.frame(chr = as.numeric(map$chromosome), pos = map$physical.pos,
                         a0 = map$allele2, a1 = map$allele1)

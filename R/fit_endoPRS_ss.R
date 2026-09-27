@@ -116,6 +116,14 @@ fit_endoPRS_ss = function(G, map, fam,
   thresh_pairs = expand.grid(thresh = threshes, thresh_endo = threshes_endo)
   thresh_pairs = thresh_pairs[thresh_pairs$thresh_endo <= thresh_pairs$thresh, ]
 
+  ## Without this, an emptied grid surfaces much later as a misleading validation-set error
+  if(nrow(thresh_pairs) == 0){
+    stop(paste0("No threshold pairs satisfy thresh_endo <= thresh. threshes = (",
+                paste(threshes, collapse = ", "), "), threshes_endo = (",
+                paste(threshes_endo, collapse = ", "),
+                "). Include at least one endophenotype threshold that is as stringent as a phenotype threshold."))
+  }
+
   ## Validation individuals
   geno_id = paste(fam[, 1], fam[, 2], sep = "_")
   val_id = paste(val_pheno[, 1], val_pheno[, 2], sep = "_")
@@ -130,7 +138,7 @@ fit_endoPRS_ss = function(G, map, fam,
     type = if(sum(!(y.val %in% c(0, 1))) > 0) "linear" else "logistic"
   }
 
-  covar.val = if(is.null(val_covar)) NULL else covar_from_df(val_covar[, -c(1, 2)])
+  covar.val = if(is.null(val_covar)) NULL else covar_from_df(val_covar[, -c(1, 2), drop = FALSE])
 
   ## Genotype map in the allele naming used by snp_match. bigsnpr's convention is that allele1 is
   ## the effect allele (a1) and allele2 is the other allele (a0).

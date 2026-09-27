@@ -4,8 +4,8 @@
 ## endoPRS calls a number of functions from the bigstatsr / bigsnpr family without qualifying them.
 ## They are imported here so that the package works whether or not the user has attached bigsnpr.
 
-#' @importFrom bigsnpr snp_match
-#' @importFrom bigstatsr big_spLinReg big_spLogReg big_prodMat covar_from_df AUC seq_log
+#' @importFrom bigsnpr snp_match seq_log
+#' @importFrom bigstatsr big_spLinReg big_spLogReg big_prodMat covar_from_df AUC
 #'   cols_along rows_along
 #' @importFrom bigsparser as_SFBM
 #' @importFrom bigassertr assert_df_with_names assert_lengths assert_pos
